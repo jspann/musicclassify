@@ -1,0 +1,121 @@
+<html>
+<style type="text/css">
+	* {
+		padding: 0;
+		margin: 0;
+	}
+
+	p{
+		font-family: 'Roboto', sans-serif;
+		z-index: 30;
+		color: white;
+		/*margin: 0 auto;*/
+	}
+
+	input[type="text"] {
+		appearance: none;
+		box-shadow: none;
+		width: 60%;
+
+		font-size: 16px;
+		font-family: 'Roboto', sans-serif;
+	}
+
+	input[type="text"]:focus {
+		outline: none;
+	}
+	
+	input[type="submit"] {
+		appearance: none;
+		background-color: rgb(0,189,237);
+		color: white;
+		cursor:pointer;
+		border-radius: 2px;
+		border: none;
+		font-size: 14px;
+		font-family: 'Roboto', sans-serif;
+		box-shadow: none;
+		outline: none;
+		padding: 3px;
+	}
+
+	input[type="submit"]:focus {
+		box-shadow: none;
+		outline: none;
+	}
+
+	#discovertext{
+		margin: 10px;
+	}
+
+	#formsearch{
+		position: fixed;
+		z-index: 40;
+		width:50%;
+		text-align: center;
+		left: 25%;
+		top: 25%;
+		background-color: rgba(0, 0, 0, 0.5);
+	}
+
+	#backimage{
+		width: 100%;
+		height: auto;
+		max-height: 100%;
+		max-width: 100%;
+		position: absolute;
+	}
+
+	#searchbox{
+		position:relative;
+		/*margin: 0 auto;*/
+		left: 25%;
+		width: 50%;
+	}
+
+	#bottomsuggestions{
+		bottom: 0px;
+		margin: 10px;
+		float: bottom:0px;
+		font-size: 12px;
+	}
+</style>
+<link href='https://fonts.googleapis.com/css?family=Roboto:400,700,500' rel='stylesheet' type='text/css'>
+<script src="jquery.min.js"></script>
+<script type="text/javascript">
+	var suggestions = ["\"Slow trance music\"", "\"Dance songs with a beat\"", "\"Heavy metal with violins\""];
+	var i = 0;
+	function changeText(){
+		$("#bottomsuggestions").fadeOut(function() {
+			$(this).text(suggestions[i]).fadeIn();
+		});
+		++i;
+		if (i==suggestions.length) {
+			i = 0;
+		}
+		setTimeout(changeText, 2500);
+	}
+	setTimeout(changeText, 1500);
+</script>
+
+<body>
+
+
+	<div id="searchbox">
+		<form action="run_translate" method="POST" enctype="multipart/form-data" id="formsearch">
+			<p id="discovertext">Discover new music by searching for what you love</p>
+
+			<input type="text" name="q" value="" id="searchtext" autocomplete="off">
+			<input type="submit" value="Search">
+
+			<p id="bottomsuggestions">"Slow trance music"</p>
+		</form>
+	</div>
+
+
+
+
+	<img src="backdrop2.jpg" id="backimage">
+</body>
+
+</html>
